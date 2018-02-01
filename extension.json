@@ -1,0 +1,72 @@
+{
+	"name": "ArticleNotify",
+	"version": "0.0.0",
+	"author": [
+		"Tony Thomas"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:BoilerPlate",
+	"descriptionmsg": "boilerplate-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"AutoloadClasses": {
+		"BoilerPlateHooks": "src/BoilerPlateHooks.php",
+		"ArticleNotifyPresentationModel": "src/ArticleNotifyPresentationModel.php",
+		"MediaWiki\\Extension\\BoilerPlate\\SpecialHelloWorld": "src/SpecialHelloWorld.php"
+	},
+	"DefaultUserOptions": {
+		"echo-subscriptions-web-newsletter": true,
+		"echo-subscriptions-email-newsletter": true
+	},
+	"ConfigRegistry": {
+		"boilerplate": "GlobalVarConfig::newInstance"
+	},
+	"config": {
+		"BoilerPlateEnableFoo": {
+			"value": true,
+			"description": "Whether or not the foo feature is enabled."
+		}
+	},
+	"ExtensionMessagesFiles": {
+		"BoilerPlateAlias": "BoilerPlate.i18n.alias.php"
+	},
+	"Hooks": {
+		"BeforeCreateEchoEvent": [
+			"BoilerPlateHooks::onBeforeCreateEchoEvent"
+		],
+		"EchoGetDefaultNotifiedUsers": [
+			"BoilerPlateHooks::onEchoGetDefaultNotifiedUsers"
+		],
+		"PageContentSaveComplete": [
+			"BoilerPlateHooks::onPageContentSaveComplete"
+		],
+		"PageContentSave": [
+			"BoilerPlateHooks::onPageContentSave"
+		]
+	},
+	"MessagesDirs": {
+		"BoilerPlate": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.boilerPlate.foo": {
+			"scripts": [
+				"ext.boilerPlate.js",
+				"ext.boilerPlate.foo.js"
+			],
+			"styles": [
+				"ext.boilerPlate.foo.css"
+			],
+			"messages": [],
+			"dependencies": []
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "BoilerPlate/modules"
+	},
+	"SpecialPages": {
+		"HelloWorld": "MediaWiki\\Extension\\BoilerPlate\\SpecialHelloWorld"
+	},
+	"manifest_version": 2
+}
